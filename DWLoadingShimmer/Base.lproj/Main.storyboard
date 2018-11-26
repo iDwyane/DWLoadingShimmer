@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R9E-H5-YjE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R9E-H5-YjE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -184,9 +185,23 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2of-hv-0VC">
+                                <rect key="frame" x="16" y="274" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jEH-wF-P2J">
+                                <rect key="frame" x="265" y="274" width="94" height="29"/>
+                            </stepper>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-tX-vhw">
+                                <rect key="frame" x="163" y="316" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jEH-wF-P2J" firstAttribute="top" secondItem="14K-fh-1A0" secondAttribute="bottom" constant="45" id="0a9-af-RN2"/>
                             <constraint firstItem="14K-fh-1A0" firstAttribute="leading" secondItem="W6H-RP-co1" secondAttribute="leading" id="2Xh-jh-ITH"/>
                             <constraint firstItem="sJJ-qi-mfy" firstAttribute="bottom" secondItem="Lj4-WV-MCb" secondAttribute="bottom" constant="-3" id="AWQ-qx-wra"/>
                             <constraint firstItem="J8V-nz-hc2" firstAttribute="leading" secondItem="Lj4-WV-MCb" secondAttribute="trailing" constant="20" id="Dq9-Vx-dYO"/>
@@ -196,11 +211,16 @@
                             <constraint firstItem="eZP-Wd-Ntj" firstAttribute="trailing" secondItem="sQZ-LV-oRp" secondAttribute="trailing" id="W0Z-p8-50t"/>
                             <constraint firstItem="eZP-Wd-Ntj" firstAttribute="trailing" secondItem="G0O-Ua-Nqj" secondAttribute="trailing" constant="16" id="XDU-nA-LFV"/>
                             <constraint firstItem="Lj4-WV-MCb" firstAttribute="top" secondItem="eZP-Wd-Ntj" secondAttribute="top" constant="20" id="YIw-um-1Q3"/>
+                            <constraint firstItem="m7D-tX-vhw" firstAttribute="top" secondItem="14K-fh-1A0" secondAttribute="bottom" constant="87" id="blk-Wy-tnt"/>
                             <constraint firstAttribute="trailing" secondItem="14K-fh-1A0" secondAttribute="trailing" id="c1k-Jm-3WN"/>
                             <constraint firstItem="Lj4-WV-MCb" firstAttribute="leading" secondItem="eZP-Wd-Ntj" secondAttribute="leading" constant="16" id="cpK-hY-ksu"/>
                             <constraint firstItem="G0O-Ua-Nqj" firstAttribute="leading" secondItem="eZP-Wd-Ntj" secondAttribute="leading" constant="16" id="h5G-cu-obu"/>
                             <constraint firstItem="sQZ-LV-oRp" firstAttribute="leading" secondItem="eZP-Wd-Ntj" secondAttribute="leading" id="ig9-yr-oYy"/>
                             <constraint firstItem="sJJ-qi-mfy" firstAttribute="leading" secondItem="Lj4-WV-MCb" secondAttribute="trailing" constant="16" id="mVL-lo-ohT"/>
+                            <constraint firstItem="2of-hv-0VC" firstAttribute="leading" secondItem="eZP-Wd-Ntj" secondAttribute="leading" constant="16" id="oIg-Ol-p5G"/>
+                            <constraint firstItem="2of-hv-0VC" firstAttribute="top" secondItem="14K-fh-1A0" secondAttribute="bottom" constant="45" id="orB-ft-aJp"/>
+                            <constraint firstItem="eZP-Wd-Ntj" firstAttribute="trailing" secondItem="jEH-wF-P2J" secondAttribute="trailing" constant="16" id="pmh-DX-kWJ"/>
+                            <constraint firstItem="m7D-tX-vhw" firstAttribute="centerX" secondItem="W6H-RP-co1" secondAttribute="centerX" id="pqz-i7-mQ9"/>
                             <constraint firstItem="eZP-Wd-Ntj" firstAttribute="trailing" secondItem="J8V-nz-hc2" secondAttribute="trailing" constant="81" id="rpU-Zs-Qp8"/>
                             <constraint firstItem="J8V-nz-hc2" firstAttribute="top" secondItem="Lj4-WV-MCb" secondAttribute="top" id="vGY-Nf-5Vx"/>
                         </constraints>
