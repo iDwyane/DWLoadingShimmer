@@ -134,6 +134,7 @@
     for (UIView *subview in view.subviews) {
         if (subview.tag == 1127) {
             [subview removeFromSuperview];
+            break; // 跳出循环
         }
     }
 
