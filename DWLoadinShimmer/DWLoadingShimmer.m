@@ -1,57 +1,55 @@
 //
-//  ViewController.m
+//  DWLoadingShimmer.m
 //  DWLoadingShimmer
 //
-//  Created by Dwyane Wade on 2018/11/23.
+//  Created by Dwyane on 2018/11/27.
 //  Copyright © 2018年 Dwyane_Coding. All rights reserved.
-//
+// https://github.com/iDwyane/DWLoadingShimmer
 
-#import "ViewController.h"
+#import "DWLoadingShimmer.h"
 
-@interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *startLoadingBtn;
-@property (weak, nonatomic) IBOutlet UIButton *stopLoadingBtn;
-@property (nonatomic, strong) NSArray *noNeedMaskView;
+@interface DWLoadingShimmer ()
+
+/** 拿来遮盖 toCoveriView 的覆盖层 */
 @property (nonatomic, strong) UIView *viewCover;
+/** 颜色渐变层 */
 @property (nonatomic, strong) CAGradientLayer *colorLayer;
+/** 用于显示建层层的mask */
 @property (nonatomic, strong) CAShapeLayer *maskLayer;
-/** 是否已经覆盖，覆盖就继续覆盖 */
-@property (nonatomic, assign) BOOL isCovered;
 @end
 
-@implementation ViewController
+@implementation DWLoadingShimmer
 
 - (UIView *)viewCover {
     if (!_viewCover) {
         _viewCover = [UIView new];
+        _viewCover.tag = 1127; // 做一个标志，尽可能大一点，防止冲突
         _viewCover.backgroundColor = [UIColor whiteColor];
     }
     return _viewCover;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    self.view.backgroundColor = [UIColor whiteColor];
+
++ (void)startCovering:(UIView *)view {
+    [[self alloc] coverSubviews:view];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    
-    // 自定义view 也支持
-//    UIView *bgView = [UIView new];
-//    bgView.backgroundColor = [UIColor redColor];
-//    bgView.frame = CGRectMake(100, self.view.frame.size.height-60, 300, 50);
-//    [self.view addSubview:bgView];
-    //遍历 subviews
-    [self coverSubviews:self.view];
++ (void)stopCovering:(UIView *)view {
+    [[self alloc] removeSubviews:view];
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
 
-}
 
 - (void)coverSubviews:(UIView *)view {
-    self.isCovered = YES;
+    
+    if (!view) {
+        @throw [NSException exceptionWithName:@"coverSubviews"
+                                       reason:@"[(void)coverSubviews:(UIView *)view]:view is nil"
+                                     userInfo:nil];
+        return;
+    }
+
     view.backgroundColor = [UIColor whiteColor];
-    if (self.view.subviews.count > 0) {
+    if (view.subviews.count > 0) {
         for (UIView *subview in view.subviews) {
             
             // 获取每个子控件的path，用于后面的加遮盖
@@ -77,21 +75,21 @@
             
             // gradientLayer CAGradientLayer是CALayer的一个子类,用来生成渐变色的Layer
             CAGradientLayer *colorLayer = [CAGradientLayer layer];
-            colorLayer.frame = (CGRect)self.view.bounds;
-
+            colorLayer.frame = (CGRect)view.bounds;
+            
             colorLayer.startPoint = CGPointMake(-1.4, 0);
             colorLayer.endPoint = CGPointMake(1.4, 0);
             
             // 颜色分割线
             colorLayer.colors = @[(__bridge id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.01].CGColor,(__bridge id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.1].CGColor,(__bridge id)[UIColor colorWithRed:1 green:1 blue:1 alpha:0.009].CGColor, (__bridge id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.04].CGColor, (__bridge id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.02].CGColor];
-
+            
             colorLayer.locations = @[
                                      [NSNumber numberWithDouble:colorLayer.startPoint.x],
                                      [NSNumber numberWithDouble:colorLayer.startPoint.x],
                                      @0,
                                      [NSNumber numberWithDouble:0.2],
                                      [NSNumber numberWithDouble:1.2]];
-
+            
             [self.viewCover.layer addSublayer:colorLayer];
             self.colorLayer = colorLayer;
             
@@ -101,7 +99,7 @@
             maskLayer.fillColor = [UIColor whiteColor].CGColor;
             colorLayer.mask = maskLayer;
             self.maskLayer = maskLayer;
-             NSLog(@"maskLayer = %p", maskLayer);
+            
             // 动画 animate
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"locations"];
             animation.fromValue = colorLayer.locations;
@@ -116,31 +114,29 @@
             [animation setRemovedOnCompletion:NO];
             // 视图添加动画
             [colorLayer addAnimation:animation forKey:@"locations-layer"];
-
+            
         }
         
     }
     
 }
 
-- (IBAction)startLoading:(id)sender {
-    if (self.isCovered) {
+
+- (void)removeSubviews:(UIView *)view {
+    
+    if (!view) {
+        @throw [NSException exceptionWithName:@"removeSubViews"
+                                       reason:@"[(void)removeSubviews:(UIView *)view]:view is nil"
+                                     userInfo:nil];
         return;
     }
-    [self coverSubviews:self.view];
-    NSLog(@"start");
-}
+    
+    for (UIView *subview in view.subviews) {
+        if (subview.tag == 1127) {
+            [subview removeFromSuperview];
+        }
+    }
 
-- (IBAction)stopLoading:(id)sender {
-    self.isCovered = NO;
-    // 移除动态效果以及图层
-    NSLog(@"self.maskLayer = %p", self.maskLayer);
-    [self.colorLayer removeAllAnimations];
-    [self.colorLayer removeFromSuperlayer];
-    [self.maskLayer removeFromSuperlayer];
-    // 移除控件的覆盖层
-    [self.viewCover removeFromSuperview];
 }
 
 @end
-

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		797378CC21ACF3D300DE0462 /* DWLoadingShimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */; };
 		79DC8D5821A847F00095D0B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D5721A847F00095D0B4 /* AppDelegate.m */; };
 		79DC8D5B21A847F00095D0B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D5A21A847F00095D0B4 /* ViewController.m */; };
 		79DC8D5E21A847F00095D0B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D5C21A847F00095D0B4 /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		797378CA21ACF3D300DE0462 /* DWLoadingShimmer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWLoadingShimmer.h; sourceTree = "<group>"; };
+		797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWLoadingShimmer.m; sourceTree = "<group>"; };
 		79DC8D5321A847F00095D0B4 /* DWLoadingShimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWLoadingShimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DC8D5621A847F00095D0B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79DC8D5721A847F00095D0B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,10 +81,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		797378C921ACF36500DE0462 /* DWLoadinShimmer */ = {
+			isa = PBXGroup;
+			children = (
+				797378CA21ACF3D300DE0462 /* DWLoadingShimmer.h */,
+				797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */,
+			);
+			path = DWLoadinShimmer;
+			sourceTree = "<group>";
+		};
 		79DC8D4A21A847F00095D0B4 = {
 			isa = PBXGroup;
 			children = (
-				79DC8D5521A847F00095D0B4 /* DWLoadingShimmer */,
+				797378C921ACF36500DE0462 /* DWLoadinShimmer */,
+				79DC8D5521A847F00095D0B4 /* Example */,
 				79DC8D6E21A847F00095D0B4 /* DWLoadingShimmerTests */,
 				79DC8D7921A847F00095D0B4 /* DWLoadingShimmerUITests */,
 				79DC8D5421A847F00095D0B4 /* Products */,
@@ -98,7 +111,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		79DC8D5521A847F00095D0B4 /* DWLoadingShimmer */ = {
+		79DC8D5521A847F00095D0B4 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				79DC8D5621A847F00095D0B4 /* AppDelegate.h */,
@@ -111,7 +124,7 @@
 				79DC8D6421A847F00095D0B4 /* Info.plist */,
 				79DC8D6521A847F00095D0B4 /* main.m */,
 			);
-			path = DWLoadingShimmer;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		79DC8D6E21A847F00095D0B4 /* DWLoadingShimmerTests */ = {
@@ -194,7 +207,7 @@
 		79DC8D4B21A847F00095D0B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Dwyane_Coding;
 				TargetAttributes = {
 					79DC8D5221A847F00095D0B4 = {
@@ -268,6 +281,7 @@
 				79DC8D5B21A847F00095D0B4 /* ViewController.m in Sources */,
 				79DC8D6621A847F00095D0B4 /* main.m in Sources */,
 				79DC8D5821A847F00095D0B4 /* AppDelegate.m in Sources */,
+				797378CC21ACF3D300DE0462 /* DWLoadingShimmer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +350,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -343,6 +358,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -370,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -391,6 +407,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -398,6 +415,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -419,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -431,7 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DWLoadingShimmer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.idwyane.www.DWLoadingShimmer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,7 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DWLoadingShimmer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.idwyane.www.DWLoadingShimmer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
