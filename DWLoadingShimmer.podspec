@@ -40,7 +40,8 @@ Pod::Spec.new do |spec|
   #
 
   # spec.license      = "MIT"
-  spec.license      = { :type => "MIT", :file => "LICENSE" }
+  spec.license      = "MIT"
+  # spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -80,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/iDwyane/DWLoadingShimmer.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/iDwyane/DWLoadingShimmer.git", :tag => "v#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
