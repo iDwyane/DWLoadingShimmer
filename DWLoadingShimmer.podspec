@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "DWLoadingShimmer"
-  spec.version      = "0.0.1"
+  spec.version      = "1.0.1"
   spec.summary      = "This is a popular loading framework."
 
   # This description is used to generate tags and improve search results.
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.license      = "MIT"
-  spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
