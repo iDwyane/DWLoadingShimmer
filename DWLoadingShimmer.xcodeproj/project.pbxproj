@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		797378CC21ACF3D300DE0462 /* DWLoadingShimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */; };
+		79D0799C21AE36B600F158E7 /* DWLoadingShimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D0799B21AE36B600F158E7 /* DWLoadingShimmer.m */; };
 		79DC8D5821A847F00095D0B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D5721A847F00095D0B4 /* AppDelegate.m */; };
 		79DC8D5B21A847F00095D0B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D5A21A847F00095D0B4 /* ViewController.m */; };
 		79DC8D5E21A847F00095D0B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D5C21A847F00095D0B4 /* Main.storyboard */; };
 		79DC8D6021A847F00095D0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D5F21A847F00095D0B4 /* Assets.xcassets */; };
 		79DC8D6321A847F00095D0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D6121A847F00095D0B4 /* LaunchScreen.storyboard */; };
 		79DC8D6621A847F00095D0B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D6521A847F00095D0B4 /* main.m */; };
-		79DC8D7021A847F00095D0B4 /* DWLoadingShimmerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D6F21A847F00095D0B4 /* DWLoadingShimmerTests.m */; };
-		79DC8D7B21A847F00095D0B4 /* DWLoadingShimmerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D7A21A847F00095D0B4 /* DWLoadingShimmerUITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		797378CA21ACF3D300DE0462 /* DWLoadingShimmer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWLoadingShimmer.h; sourceTree = "<group>"; };
-		797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWLoadingShimmer.m; sourceTree = "<group>"; };
+		79D0799A21AE36B600F158E7 /* DWLoadingShimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoadingShimmer.h; sourceTree = "<group>"; };
+		79D0799B21AE36B600F158E7 /* DWLoadingShimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLoadingShimmer.m; sourceTree = "<group>"; };
 		79DC8D5321A847F00095D0B4 /* DWLoadingShimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWLoadingShimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DC8D5621A847F00095D0B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79DC8D5721A847F00095D0B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -49,11 +47,7 @@
 		79DC8D6421A847F00095D0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79DC8D6521A847F00095D0B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79DC8D6B21A847F00095D0B4 /* DWLoadingShimmerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DWLoadingShimmerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		79DC8D6F21A847F00095D0B4 /* DWLoadingShimmerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWLoadingShimmerTests.m; sourceTree = "<group>"; };
-		79DC8D7121A847F00095D0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79DC8D7621A847F00095D0B4 /* DWLoadingShimmerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DWLoadingShimmerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		79DC8D7A21A847F00095D0B4 /* DWLoadingShimmerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWLoadingShimmerUITests.m; sourceTree = "<group>"; };
-		79DC8D7C21A847F00095D0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,22 +75,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		797378C921ACF36500DE0462 /* DWLoadinShimmer */ = {
+		79D0799921AE36B600F158E7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				797378CA21ACF3D300DE0462 /* DWLoadingShimmer.h */,
-				797378CB21ACF3D300DE0462 /* DWLoadingShimmer.m */,
+				79D0799A21AE36B600F158E7 /* DWLoadingShimmer.h */,
+				79D0799B21AE36B600F158E7 /* DWLoadingShimmer.m */,
 			);
-			path = DWLoadinShimmer;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		79DC8D4A21A847F00095D0B4 = {
 			isa = PBXGroup;
 			children = (
-				797378C921ACF36500DE0462 /* DWLoadinShimmer */,
+				79D0799921AE36B600F158E7 /* Source */,
 				79DC8D5521A847F00095D0B4 /* Example */,
-				79DC8D6E21A847F00095D0B4 /* DWLoadingShimmerTests */,
-				79DC8D7921A847F00095D0B4 /* DWLoadingShimmerUITests */,
 				79DC8D5421A847F00095D0B4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,24 +117,6 @@
 				79DC8D6521A847F00095D0B4 /* main.m */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		79DC8D6E21A847F00095D0B4 /* DWLoadingShimmerTests */ = {
-			isa = PBXGroup;
-			children = (
-				79DC8D6F21A847F00095D0B4 /* DWLoadingShimmerTests.m */,
-				79DC8D7121A847F00095D0B4 /* Info.plist */,
-			);
-			path = DWLoadingShimmerTests;
-			sourceTree = "<group>";
-		};
-		79DC8D7921A847F00095D0B4 /* DWLoadingShimmerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				79DC8D7A21A847F00095D0B4 /* DWLoadingShimmerUITests.m */,
-				79DC8D7C21A847F00095D0B4 /* Info.plist */,
-			);
-			path = DWLoadingShimmerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +255,7 @@
 				79DC8D5B21A847F00095D0B4 /* ViewController.m in Sources */,
 				79DC8D6621A847F00095D0B4 /* main.m in Sources */,
 				79DC8D5821A847F00095D0B4 /* AppDelegate.m in Sources */,
-				797378CC21ACF3D300DE0462 /* DWLoadingShimmer.m in Sources */,
+				79D0799C21AE36B600F158E7 /* DWLoadingShimmer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +263,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79DC8D7021A847F00095D0B4 /* DWLoadingShimmerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +270,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79DC8D7B21A847F00095D0B4 /* DWLoadingShimmerUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
