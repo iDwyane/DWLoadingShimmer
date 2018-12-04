@@ -20,6 +20,9 @@
 @property (nonatomic, strong) UIBezierPath *totalCoverablePath;
 @end
 
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define safeAreaTopHeight ((kScreenHeight == 812.0 || kScreenHeight == 896.0) ? 88 : 64) //X h=812,XR & XR max h=896
+
 @implementation DWLoadingShimmer
 
 #pragma mark ------ lazy method ------
@@ -122,12 +125,11 @@
     if ([subview isMemberOfClass:[UITableView class]] || [subview isMemberOfClass:[UITableViewCell class]]) {
         
         UITableView *tableView = [subview isMemberOfClass:[UITableView class]] ?(UITableView *)subview : (UITableView *)subview.superview;
-        //        self.tableView = tableView;
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:coverableCellsIds[i]];
         
         // Determine if there is a navigation controller. 判断是否有导航控制器
-        float headerOffset = 64;//[self getHeaderOffset];
+        float headerOffset = [self getHeaderOffset];
         
         cell.frame = CGRectMake(0, cell.frame.size.height*i+headerOffset, cell.frame.size.width, cell.frame.size.height);
         
@@ -177,7 +179,7 @@
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.path = self.totalCoverablePath.CGPath;
     maskLayer.fillColor = [UIColor redColor].CGColor; //设置填充色
-    //    [colorLayer addSublayer:maskLayer];
+
     colorLayer.mask = maskLayer;
     
     // 动画 animate
@@ -195,6 +197,13 @@
     // 视图添加动画
     [colorLayer addAnimation:animation forKey:@"locations-layer"];
     
+}
+
+// 增加适配 x xr xr max
+- (CGFloat)getHeaderOffset {
+    if ([self currentViewController]) {
+        return safeAreaTopHeight;
+    }else return 0;
 }
 
 - (UIViewController *)currentViewController
