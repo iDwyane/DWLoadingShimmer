@@ -78,10 +78,18 @@
                                      userInfo:nil];
         return;
     }
-    
 
-    NSArray *coverableCellsIds = @[@"Cell1", @"Cell1", @"Cell1", @"Cell2", @"Cell2"];
+    NSArray *coverableCellsIds = @[@"Cell1", @"Cell1", @"Cell1", @"Cell1", @"Cell1"];
+    if ([view isMemberOfClass:[UITableView class]]) {
+        for (int i = 0; i < coverableCellsIds.count; i++) {
+            [self getTableViewPath:view index:i coverableCellsIds:coverableCellsIds];
+        }
+        [self coverSubviews:view];
+        return;
+    }
+
     view.backgroundColor = [UIColor whiteColor];
+
     if (view.subviews.count > 0) {
         int i = 0;
         for (UIView *subview in view.subviews) {
@@ -96,7 +104,7 @@
                 
                 // 获取每个子控件的path，用于后面的加遮盖
                 // 添加圆角
-                UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:subview.frame.size.height/2.0/*subview.layer.cornerRadius*/];
+                UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:subview.frame.size.height/2.0];
                 if ([subview isMemberOfClass:[UILabel class]] || [subview isMemberOfClass:[UITextView class]]) {
                     defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:4];
                 }
@@ -119,34 +127,28 @@
 }
 
 // 得出需要显示的的coverPath
-- (void)getTableViewPath:(UIView *)subview index:(int)i coverableCellsIds:(NSArray *)coverableCellsIds {
+- (void)getTableViewPath:(UIView *)view index:(int)i coverableCellsIds:(NSArray *)coverableCellsIds {
+    
+    UITableView *tableView = (UITableView *)view;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:coverableCellsIds[i]];
+    
+    // Determine if there is a navigation controller. 判断是否有导航控制器
+    float headerOffset = [self getHeaderOffset];
+    
+    cell.frame = CGRectMake(0, cell.frame.size.height*i+headerOffset, cell.frame.size.width, cell.frame.size.height);
+    
+    [cell layoutIfNeeded];
     
     //If it is a UITableViewCell, you still need to traverse the subviews of the cell a second time. 如果是 UITableViewCell ， 则仍需第二次遍历cell 的 subviews
-    if ([subview isMemberOfClass:[UITableView class]] || [subview isMemberOfClass:[UITableViewCell class]]) {
+    for (UIView *cellSubview in cell.contentView.subviews) {
+        UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:cellSubview.bounds cornerRadius:cellSubview.frame.size.height/2.0];
+        CGPoint offsetPoint = [cellSubview convertRect:cellSubview.bounds toView:tableView].origin;
+        [cellSubview layoutIfNeeded];
+        // 因为是相对于 tableview 的 origin，而tableview 有导航栏运行后会有一个自动调节 所以覆盖路径 为offsetPoint.y = offsetPoint.y+headerOffset
+        [defaultCoverblePath applyTransform:CGAffineTransformMakeTranslation(offsetPoint.x, offsetPoint.y+headerOffset)];
         
-        UITableView *tableView = [subview isMemberOfClass:[UITableView class]] ?(UITableView *)subview : (UITableView *)subview.superview;
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:coverableCellsIds[i]];
-        
-        // Determine if there is a navigation controller. 判断是否有导航控制器
-        float headerOffset = [self getHeaderOffset];
-        
-        cell.frame = CGRectMake(0, cell.frame.size.height*i+headerOffset, cell.frame.size.width, cell.frame.size.height);
-        
-        [cell layoutIfNeeded];
-        
-        for (UIView *cellSubview in cell.contentView.subviews) {
-            UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:cellSubview.bounds cornerRadius:cellSubview.frame.size.height/2.0];
-            CGPoint offsetPoint = [cellSubview convertRect:cellSubview.bounds toView:tableView].origin;
-            [cellSubview layoutIfNeeded];
-            // 因为是相对于 tableview 的 origin，而tableview 有导航栏运行后会有一个自动调节 所以覆盖路径 为offsetPoint.y = offsetPoint.y+headerOffset
-            [defaultCoverblePath applyTransform:CGAffineTransformMakeTranslation(offsetPoint.x, offsetPoint.y+headerOffset)];
-            
-            [self.totalCoverablePath appendPath:defaultCoverblePath];
-        }
-        
+        [self.totalCoverablePath appendPath:defaultCoverblePath];
     }
-    
     
 }
 

@@ -14,6 +14,7 @@
 		79DC8D6021A847F00095D0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D5F21A847F00095D0B4 /* Assets.xcassets */; };
 		79DC8D6321A847F00095D0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DC8D6121A847F00095D0B4 /* LaunchScreen.storyboard */; };
 		79DC8D6621A847F00095D0B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DC8D6521A847F00095D0B4 /* main.m */; };
+		79E28B9921B68DE500A6C8DD /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E28B9821B68DE500A6C8DD /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		79DC8D6521A847F00095D0B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79DC8D6B21A847F00095D0B4 /* DWLoadingShimmerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DWLoadingShimmerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DC8D7621A847F00095D0B4 /* DWLoadingShimmerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DWLoadingShimmerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79E28B9721B68DE500A6C8DD /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		79E28B9821B68DE500A6C8DD /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				79DC8D5721A847F00095D0B4 /* AppDelegate.m */,
 				79DC8D5921A847F00095D0B4 /* ViewController.h */,
 				79DC8D5A21A847F00095D0B4 /* ViewController.m */,
+				79E28B9721B68DE500A6C8DD /* TableViewController.h */,
+				79E28B9821B68DE500A6C8DD /* TableViewController.m */,
 				79DC8D5C21A847F00095D0B4 /* Main.storyboard */,
 				79DC8D5F21A847F00095D0B4 /* Assets.xcassets */,
 				79DC8D6121A847F00095D0B4 /* LaunchScreen.storyboard */,
@@ -255,6 +260,7 @@
 				79DC8D5B21A847F00095D0B4 /* ViewController.m in Sources */,
 				79DC8D6621A847F00095D0B4 /* main.m in Sources */,
 				79DC8D5821A847F00095D0B4 /* AppDelegate.m in Sources */,
+				79E28B9921B68DE500A6C8DD /* TableViewController.m in Sources */,
 				79D0799C21AE36B600F158E7 /* DWLoadingShimmer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
