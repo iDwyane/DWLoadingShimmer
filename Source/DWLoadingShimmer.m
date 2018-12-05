@@ -79,12 +79,19 @@
         return;
     }
 
+    // Avoid multiple cover. 避免多次cover
+    for (UIView *subview in view.subviews) {
+        if (subview.tag == 1127) {
+            return;
+        }
+    }
+    
     NSArray *coverableCellsIds = @[@"Cell1", @"Cell1", @"Cell1", @"Cell1", @"Cell1"];
     if ([view isMemberOfClass:[UITableView class]]) {
         for (int i = 0; i < coverableCellsIds.count; i++) {
             [self getTableViewPath:view index:i coverableCellsIds:coverableCellsIds];
         }
-        [self coverSubviews:view];
+        [self addCoverView:view];
         return;
     }
 

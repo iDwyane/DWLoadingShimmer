@@ -24,7 +24,9 @@
     self.numberOfRows = 0;
 }
 
-
+- (void)viewDidAppear:(BOOL)animated {
+    [DWLoadingShimmer startCovering:self.tableView];
+}
 
 #pragma mark - Table view data source
 
