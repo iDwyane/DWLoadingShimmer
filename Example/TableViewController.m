@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+//    if (@available(iOS 11.0, *)) {
+//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }else {
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
     //默认为 0
     self.numberOfSections = 0;
     self.numberOfRows = 0;
@@ -51,6 +56,9 @@
 }
 
 - (IBAction)startLoading:(id)sender {
+    self.numberOfSections = 0;
+    self.numberOfRows = 0;
+    [self.tableView reloadData];
     [DWLoadingShimmer startCovering:self.tableView];
 }
 

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) CAShapeLayer *maskLayer;
 /** 总的覆盖路径 */
 @property (nonatomic, strong) UIBezierPath *totalCoverablePath;
+@property (nonatomic, assign) BOOL addOffsetflag;
 @end
 
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -100,30 +101,22 @@
     if (view.subviews.count > 0) {
         int i = 0;
         for (UIView *subview in view.subviews) {
-            // 判断是否 UITableviewCell 类型
-            if ([subview isMemberOfClass:[UITableViewCell class]]) {
-                [self getTableViewPath:subview index:i coverableCellsIds:coverableCellsIds];
-                i++;
-                if (i == coverableCellsIds.count-1) {
-                    break; //退出循环
-                }
-            }else {
-                
-                // 获取每个子控件的path，用于后面的加遮盖
-                // 添加圆角
-                UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:subview.frame.size.height/2.0];
-                if ([subview isMemberOfClass:[UILabel class]] || [subview isMemberOfClass:[UITextView class]]) {
-                    defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:4];
-                }
-                UIBezierPath *relativePath = defaultCoverblePath;
-                
-                // 计算subview相对super的view的frame
-                CGPoint offsetPoint = [subview convertRect:subview.bounds toView:view].origin;
-                [subview layoutIfNeeded];
-                [relativePath applyTransform:CGAffineTransformMakeTranslation(offsetPoint.x, offsetPoint.y)];
-                
-                [self.totalCoverablePath appendPath:relativePath];
+            
+            // 获取每个子控件的path，用于后面的加遮盖
+            // 添加圆角
+            UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:subview.frame.size.height/2.0];
+            if ([subview isMemberOfClass:[UILabel class]] || [subview isMemberOfClass:[UITextView class]]) {
+                defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:subview.bounds cornerRadius:4];
             }
+            UIBezierPath *relativePath = defaultCoverblePath;
+            
+            // 计算subview相对super的view的frame
+            CGPoint offsetPoint = [subview convertRect:subview.bounds toView:view].origin;
+            [subview layoutIfNeeded];
+            [relativePath applyTransform:CGAffineTransformMakeTranslation(offsetPoint.x, offsetPoint.y)];
+            
+            [self.totalCoverablePath appendPath:relativePath];
+
             
         }
         // 添加遮罩以及动态效果
@@ -137,19 +130,29 @@
 - (void)getTableViewPath:(UIView *)view index:(int)i coverableCellsIds:(NSArray *)coverableCellsIds {
     
     UITableView *tableView = (UITableView *)view;
+
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:coverableCellsIds[i]];
     
     // Determine if there is a navigation controller. 判断是否有导航控制器
     float headerOffset = [self getHeaderOffset];
-    
+
     cell.frame = CGRectMake(0, cell.frame.size.height*i+headerOffset, cell.frame.size.width, cell.frame.size.height);
-    
+
     [cell layoutIfNeeded];
     
     //If it is a UITableViewCell, you still need to traverse the subviews of the cell a second time. 如果是 UITableViewCell ， 则仍需第二次遍历cell 的 subviews
     for (UIView *cellSubview in cell.contentView.subviews) {
         UIBezierPath *defaultCoverblePath = [UIBezierPath bezierPathWithRoundedRect:cellSubview.bounds cornerRadius:cellSubview.frame.size.height/2.0];
         CGPoint offsetPoint = [cellSubview convertRect:cellSubview.bounds toView:tableView].origin;
+        if (i==0) {
+            if (offsetPoint.y > cellSubview.frame.origin.y) {
+                self.addOffsetflag = YES;
+            }
+        }
+        if (self.addOffsetflag) {
+            offsetPoint.y -= headerOffset;
+        }
         [cellSubview layoutIfNeeded];
         // 因为是相对于 tableview 的 origin，而tableview 有导航栏运行后会有一个自动调节 所以覆盖路径 为offsetPoint.y = offsetPoint.y+headerOffset
         [defaultCoverblePath applyTransform:CGAffineTransformMakeTranslation(offsetPoint.x, offsetPoint.y+headerOffset)];
@@ -164,7 +167,7 @@
     //  添加挡住所有控件的覆盖层(挡住整superview，包括 superview 的子控件)
     self.viewCover.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height); // tableview的y值由系统自动调节，所以不用 +headerOffset
     [view addSubview:self.viewCover];
-    
+
     // gradientLayer CAGradientLayer是CALayer的一个子类,用来生成渐变色的Layer
     CAGradientLayer *colorLayer = [CAGradientLayer layer];
     colorLayer.frame = (CGRect)view.bounds;
